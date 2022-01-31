@@ -1,9 +1,8 @@
 import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente {
-    static nContas = 0;
-    agencia;
-    _cliente;
+
+    static nContas = 0;    
 
     //isso faz com que dê pra acessar uma propriedade privada
     set cliente(novoValor) {
@@ -26,6 +25,7 @@ export class ContaCorrente {
     constructor(agencia, cliente){
         this.agencia = agencia;
         this.cliente = cliente;
+        this._saldo = 0;
         ContaCorrente.nContas += 1;
     }
 
