@@ -25,11 +25,22 @@ export class Conta{
 
     sacar(valor) {        
 
-        if (this._saldo >= valor) {
-            this._saldo -= valor;
+        let taxa = 1;
 
-            return valor;
+        return this._sacar(valor, taxa);
+    }
+
+    _sacar(valor, taxa){       
+
+        const vlSacado = taxa * valor;
+
+        if (this._saldo >= vlSacado) {
+            this._saldo -= vlSacado;
+
+            return vlSacado;
         }
+
+        return 0; //caso nao tiver saldo suficiente para ser sacado
     }
 
     depositar(valor) {
@@ -40,5 +51,9 @@ export class Conta{
     transferir(valor, conta) {
         const vlSacado = this.sacar(valor);
         conta.depositar(vlSacado);
+    }
+
+    teste(){        
+        console.log("teste na classe conta ");
     }
 }
